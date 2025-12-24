@@ -1,10 +1,13 @@
 import React from "react";
+import { ArrowRight } from "lucide-react";
 
 export const Seemore = () => {
   return (
-    <div className="relative top-35">
-      <div>Upcoming</div>
-      <div>See more</div>
+    <div className=" flex ">
+      <button className="p-2 bg-amber-300 hover:cursor-pointer flex gap-2 items-center justify-center">
+        <span>See more</span>
+        <ArrowRight />
+      </button>
     </div>
   );
 };

@@ -1,11 +1,13 @@
-import React from "react";
+// /movie/popular?language=en-US&page=1
 
 import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
+
 import { Seemore } from "./Seemore";
-const fetchFromUpcomingMovieDB = async () => {
+
+const fetchFromPopularMovieDB = async () => {
   const response = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
     {
       headers: {
         "Content-Type": "application/json",
@@ -18,18 +20,12 @@ const fetchFromUpcomingMovieDB = async () => {
   return data.results;
 };
 
-export default async function Upcoming() {
-  const movies: Movie[] = await fetchFromUpcomingMovieDB();
-
+export default async function Popular() {
+  const movies: Movie[] = await fetchFromPopularMovieDB();
   return (
-    <div className="">
-      <div className="flex justify-between m-10">
-        <span className="font-semibold text-[24px]">Upcoming </span>
-        <Seemore />
-      </div>
-      <div className="grid grid-cols-5 gap-5  w-[70vw] ml-0">
-        {/* <span className="relative bottom-10">asd</span> */}
-        {movies.slice(0, 10).map((movie) => (
+    <div>
+      <div>
+        {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
