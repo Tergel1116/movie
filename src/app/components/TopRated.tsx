@@ -1,13 +1,10 @@
-// /movie/popular?language=en-US&page=1
-
+import { Seemore } from "./Seemore";
 import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
 
-import { Seemore } from "./Seemore";
-
-export const fetchFromPopularMovieDB = async (category: string) => {
+const fetchFromTopRatedMovieDB = async () => {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${category}`,
+    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
     {
       headers: {
         "Content-Type": "application/json",
@@ -17,15 +14,16 @@ export const fetchFromPopularMovieDB = async (category: string) => {
   );
   const data = await response.json();
   console.log(data);
+
   return data.results;
 };
 
-export default async function Popular() {
-  const movies: Movie[] = await fetchFromPopularMovieDB("popular");
+export default async function TopRated() {
+  const movies: Movie[] = await fetchFromTopRatedMovieDB();
   return (
-    <div className="flex flex-col  m-0">
-      <div className="flex justify-between items center m-10">
-        <span className="text-[24px] font-semibold">Popular</span>
+    <div className="flex flex-col">
+      <div className="flex items-center m-10 justify-between">
+        <span className="text-[26px] font-semibold">Top Rated</span>
         <Seemore />
       </div>
       <div className="grid grid-cols-5 gap-5 w-[70vw]">

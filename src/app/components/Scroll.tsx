@@ -9,24 +9,29 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export const Scroll = () => {
+import { NowPlaying } from "./NowPlaying";
+import type { Movie } from "../page";
+
+type ScrollProps = {
+  movies: Movie[];
+};
+
+export const Scroll = ({ movies }: ScrollProps) => {
   return (
-    <div className="flex justify-center bg-amber-500 mt-10">
+    <div className="flex justify-center mt-10">
       <Carousel
-        className="w-[100vw]"
+        className="w-screen"
+        opts={{ loop: true }}
         plugins={[
           Autoplay({
-            delay: 3000,
+            delay: 5000,
           }),
         ]}
       >
-        <CarouselContent className="">
-          {[1, 2, 3, 4].map((i) => (
+        <CarouselContent className="w-full">
+          {movies.map((movie, i) => (
             <CarouselItem key={i} className="">
-              <div className="h-[600px]  flex items-center justify-center bg-red-200 ">
-                Slide {i}
-                {/* <img src="pic.jpg" alt="" /> */}
-              </div>
+              <NowPlaying movie={movie} />
             </CarouselItem>
           ))}
         </CarouselContent>

@@ -9,7 +9,7 @@ const fetchFromUpcomingMovieDB = async () => {
     {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMDc4NTYyZWE3NThlY2QyMmMwMmNkNDBkMmY5ZjU5MiIsIm5iZiI6MTc2NjU1MTc2Ni4wODksInN1YiI6IjY5NGI3MGQ2MTI4MzMwYTI0MWIxZDRjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NgHj33F-HetHfBAE-ExlxFnwjDDKaElih0z9qdvBzl0`,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_KEY}`,
       },
     }
   );
