@@ -29,7 +29,7 @@ export default async function Popular() {
         <Seemore />
       </div>
       <div className="grid grid-cols-5 gap-5 w-[70vw]">
-        {movies.slice(0, 10).map((movie) => (
+        {movies?.slice(0, 10).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>

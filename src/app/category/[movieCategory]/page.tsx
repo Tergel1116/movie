@@ -21,6 +21,14 @@
 import { fetchFromPopularMovieDB } from "@/app/components/Popular";
 import { MovieCard } from "@/app/components/MovieCard";
 
+type Movie = {
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  backdrop_path: string;
+};
+
 export default async function Page({
   params,
 }: {
