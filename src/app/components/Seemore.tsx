@@ -5,7 +5,7 @@ import Link from "next/link";
 export const Seemore = () => {
   return (
     <div className=" flex ">
-      <Link href="/category/popular">
+      <Link href="/category/upcoming">
         <button className="p-2 bg-amber-300 hover:cursor-pointer flex gap-2 items-center justify-center">
           <span>See more</span>
           <ArrowRight />

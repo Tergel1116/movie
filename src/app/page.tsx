@@ -39,12 +39,12 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <Header />
+      {/* <Header /> */}
       <Scroll movies={movies.slice(0, 10)} />
       <Upcoming />
       <Popular />
       <TopRated />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

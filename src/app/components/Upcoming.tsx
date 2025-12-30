@@ -3,6 +3,9 @@ import React from "react";
 import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
 import { Seemore } from "./Seemore";
+import Link from "next/link";
+import { Header } from "./Header";
+
 const fetchFromUpcomingMovieDB = async () => {
   const response = await fetch(
     "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
@@ -14,7 +17,7 @@ const fetchFromUpcomingMovieDB = async () => {
     }
   );
   const data = await response.json();
-  console.log(data);
+
   return data.results;
 };
 
@@ -25,7 +28,12 @@ export default async function Upcoming() {
     <div className="">
       <div className="flex justify-between m-10">
         <span className="font-semibold text-[24px]">Upcoming </span>
-        <Seemore />
+        {/* <Seemore /> */}
+        <Link href="/category/upcoming">
+          <button className="p-2 bg-amber-300 hover:cursor-pointer flex gap-2 items-center justify-center">
+            <span>See more</span>
+          </button>
+        </Link>
       </div>
       <div className="grid grid-cols-5 gap-5  w-[70vw] ml-0">
         {/* <span className="relative bottom-10">asd</span> */}

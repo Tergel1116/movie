@@ -2,7 +2,7 @@
 
 import { Movie } from "../page";
 import { MovieCard } from "./MovieCard";
-
+import Link from "next/link";
 import { Seemore } from "./Seemore";
 
 export const fetchFromPopularMovieDB = async (category: string) => {
@@ -16,7 +16,7 @@ export const fetchFromPopularMovieDB = async (category: string) => {
     }
   );
   const data = await response.json();
-  console.log(data);
+
   return data.results;
 };
 
@@ -26,7 +26,12 @@ export default async function Popular() {
     <div className="flex flex-col  m-0">
       <div className="flex justify-between items center m-10">
         <span className="text-[24px] font-semibold">Popular</span>
-        <Seemore />
+        {/* <Seemore /> */}
+        <Link href="/category/popular">
+          <button className="p-2 bg-amber-300 hover:cursor-pointer flex gap-2 items-center justify-center">
+            <span>See more</span>
+          </button>
+        </Link>
       </div>
       <div className="grid grid-cols-5 gap-5 w-[70vw]">
         {movies?.slice(0, 10).map((movie) => (
