@@ -8,6 +8,7 @@ import { fetcher } from "@/utils/fetcher";
 // import { data } from "react-router-dom";
 import { Divide, Loader } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
+import { MovieCard } from "./MovieCard";
 export const Header = () => {
   const pathname = usePathname();
   const { push } = useRouter();
@@ -40,8 +41,7 @@ export const Header = () => {
             className="py-[3px] px-2 border border-gray-200 rounded-[6px] w-[379px]"
             onChange={handleChange}
           />
-          <div>asd</div>
-          {/* {pathname} */}
+          <div></div>
         </div>
       </div>
       <div className="">
