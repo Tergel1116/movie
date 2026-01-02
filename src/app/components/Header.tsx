@@ -9,6 +9,7 @@ import { fetcher } from "@/utils/fetcher";
 import { Divide, Loader } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
 import { MovieCard } from "./MovieCard";
+import { SearchResults } from "./SearchResults";
 export const Header = () => {
   const pathname = usePathname();
   const { push } = useRouter();
@@ -18,29 +19,39 @@ export const Header = () => {
     `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/search/movie?query=${searchValue}&language=en-US&page=1`,
     fetcher
   );
+  const results = data?.results ?? [];
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    push(`/?query=${event.target.value}`);
+    // push(`/?query=${event.target.value}`);
   };
   console.log(data);
   return (
-    <div className="w-screen flex justify-between px-[48px] py-[20px] items-center">
+    <div className=" w-screen flex justify-between px-[48px] py-[20px] items-center">
       <Link href="/">
         <img src="/movieLogo.png" alt="" className="" />
       </Link>
-      <div className="flex gap-[10px]">
+      <div className="flex gap-[10px] relative right-40">
         {/* <img src="button.png" alt="" /> */}
         <button className="h-8 w-25 bg-white border border-gray-200 rounded-[6px]">
           ∨ Genre
         </button>
-        <div className="flex flex-col items center justify-center">
-          {isLoading && <Loader />}
+        <div className="flex flex-col items center justify-center absolute left-30">
           <input
             type="search"
             placeholder="Search..."
             className="py-[3px] px-2 border border-gray-200 rounded-[6px] w-[379px]"
             onChange={handleChange}
+            value={searchValue}
           />
+          {isLoading && <Loader className="relative top-10 left-45  z-10" />}
+          <div className="absolute z-1 top-7 right-1 left-1">
+            <SearchResults
+              keyword={searchValue}
+              results={results}
+              onClose={() => setSearchValue("")}
+              // searchValue={searchValue}
+            />
+          </div>
           <div></div>
         </div>
       </div>

@@ -18,7 +18,7 @@ type ScrollProps = {
 
 export const Scroll = ({ movies }: ScrollProps) => {
   return (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center mt-10 ">
       <Carousel
         className="w-screen"
         opts={{ loop: true }}
