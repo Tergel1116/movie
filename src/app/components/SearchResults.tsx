@@ -158,7 +158,7 @@ export const SearchResults = ({ keyword, results, onClose }: Props) => {
             {/* RIGHT: See more button */}
             <button
               // onClick={}
-              className="flex-shrink-0 text-sm font-medium text-blue-600 hover:underline"
+              className="flex-shrink-0 text-sm hover:cursor-pointer font-medium text-blue-600 hover:underline"
             >
               See more →
             </button>

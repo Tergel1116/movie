@@ -24,7 +24,7 @@ export const Header = () => {
     setSearchValue(event.target.value);
     // push(`/?query=${event.target.value}`);
   };
-  console.log(data);
+  // console.log(data);
   return (
     <div className=" w-screen flex justify-between px-[48px] py-[20px] items-center">
       <Link href="/">
