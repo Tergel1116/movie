@@ -26,8 +26,8 @@ export default async function TopRated() {
         <span className="text-[26px] font-semibold">Top Rated</span>
         {/* <Seemore /> */}
         <Link href="/category/top_rated">
-          <button className="p-2 bg-amber-300 hover:cursor-pointer flex gap-2 items-center justify-center">
-            <span>See more</span>
+          <button className=" hover:cursor-pointer flex gap-2 items-center justify-center">
+            <span>See more ➔</span>
           </button>
         </Link>
       </div>

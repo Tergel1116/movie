@@ -59,10 +59,10 @@ export const NowPlaying = ({ movie }: Props) => {
         </div>
         <div className=" flex gap-2  text-[18px] font-bold text-white">
           ⭐{movie.vote_average?.toFixed(1)}
-          <span className="text-gray-600 opacity-40">/10</span>
+          <span className="text-gray-600 opacity-100">/10</span>
         </div>
         <div className="  text-[12px] text-white w-100">{movie.overview}</div>
-        <div className=" h-12 w-35 bg-white rounded-[8px] flex flex-row items-center justify-center  gap-2">
+        <div className=" h-12 w-35 bg-white rounded-[8px] hover:cursor-pointer hover:bg-gray-200 duration-500 flex flex-row items-center justify-center  gap-2">
           ▷ Watch Trailer
         </div>
       </div>

@@ -9,4 +9,5 @@ type Movie = {
   release_date: string;
   vote_average: number;
   original_title: string;
+  genres: string;
 };

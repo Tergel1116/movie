@@ -15,7 +15,7 @@ type Props = {
 };
 export const MovieCard = ({ movie }: Props) => {
   return (
-    <Link href="/movieDetails/id">
+    <Link href={`/movieDetails/${movie.id}`}>
       <div className="flex items-center justify-center ">
         <div className="flex gap-1  flex-col  w-[200px] duration-500 transition-transform ease-in-out hover:scale-110 rounded-lg  bg-gray-100 h-[395px]">
           <Image

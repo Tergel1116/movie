@@ -26,12 +26,12 @@ export default async function Upcoming() {
 
   return (
     <div className="">
-      <div className="flex justify-between m-10">
+      <div className="flex justify-between m-10 items-center">
         <span className="font-semibold text-[24px]">Upcoming </span>
         {/* <Seemore /> */}
         <Link href="/category/upcoming">
-          <button className="p-2 bg-amber-300 hover:cursor-pointer flex gap-2 items-center justify-center">
-            <span>See more</span>
+          <button className="  hover:cursor-pointer flex gap-2 items-center justify-center">
+            <span className="">See more ➔</span>
           </button>
         </Link>
       </div>

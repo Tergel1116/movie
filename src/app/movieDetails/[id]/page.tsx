@@ -1,9 +1,10 @@
 import Image from "next/image";
 
 import { AlignVerticalJustifyEnd } from "lucide-react";
+import { log } from "console";
 
 export type Movie = {
-  id: Number;
+  id: number;
   runtime: number;
   vote_count: number;
   backdrop_path: string;
@@ -13,98 +14,112 @@ export type Movie = {
   release_date: string;
   vote_average: number;
   original_title: string;
+  // genres: string;
+  genres: { id: number; name: string }[];
+  trailer: number;
 };
-
-const fetchFromMovieByIdDB = async () => {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movie_id}
-`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_KEY}`,
-      },
-    }
-  );
+type Props = {
+  movie: Movie;
+};
+const fetchFromMovieByIdDB = async (id: string) => {
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_KEY}`,
+    },
+  });
   const data = await response.json();
-
-  return data.results;
+  // console.log(data);
+  return data;
 };
-
 export default async function movieDetail({
   params,
 }: {
-  params: Promise<{ movieDetail: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const { movieDetail } = await params;
-  const movies: Movie = await fetchFromMovieByIdDB();
+  const { id } = await params;
 
-  return <div>{}</div>;
+  const movie: Movie = await fetchFromMovieByIdDB(id);
+
+  const imagePath = "https://image.tmdb.org/t/p/original";
+  return (
+    <div className="mb-[0px]">
+      <div className="flex w-screen justify-between px-20 pb-5 ">
+        <div>
+          <div className="text-[36px] font-bold">{movie.title}</div>
+          <div className="flex gap-2">
+            <div>{movie.release_date} · PG ·</div>
+            <div>
+              {`${Math.floor(movie.runtime / 60)}${"h"} ${(movie.runtime % 60)
+                .toString()
+                .padStart(2, "0")}${"m"}`}
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>Rating</div>
+          <div className="flex items-center justify-center gap-3">
+            <span className="scale-170 ml-2">⭐</span>
+            <div>
+              <div className="">
+                <span className="font-bold">
+                  {movie.vote_average.toFixed(1)}
+                </span>
+                <span className="text-[14px] text-gray-500">/10</span>
+              </div>
+              <div>{movie.vote_count}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-9 ">
+        <div className="flex gap-8 items-center justify-center flex-col">
+          <div className="flex items-center justify-between gap-10">
+            <Image
+              src={`${imagePath}${movie.poster_path}`}
+              alt={movie.title}
+              height={427}
+              width={290}
+            />
+            <div className="relative">
+              <Image
+                src={`${imagePath}${movie.backdrop_path}`}
+                alt={movie.title}
+                height={428}
+                width={774}
+              />
+              <div className="absolute bottom-[5%] left-[5%] flex items-center justify-center gap-2">
+                <span className="px-3 py-1.5 bg-white rounded-full hover:cursor-pointer">
+                  ▷
+                </span>
+                <span className="text-white font-semibold">Play trailer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="px-20 flex gap-3">
+          {movie.genres?.map((genre) => (
+            <div
+              key={genre.id}
+              className="px-4 py-2 bg-white flex gap-4 rounded-2xl text-black text-[14px] border border-gray-300 "
+            >
+              {genre.name}
+            </div>
+          ))}
+        </div>
+        <div className="px-20">{movie.overview}</div>
+      </div>
+    </div>
+  );
 }
-
-// asdf
-// asdf
-// asdf
-// asdf
-// asdf
-// asdf
-// asdf
-// asdf
-// asdf
-// import { log } from "console";
-// import Image from "next/image";
-
-// export type Movie = {
-//   id: number;
-//   runtime: number;
-//   vote_count: number;
-//   backdrop_path: string;
-//   title: string;
-//   poster_path: string;
-//   overview: string;
-//   release_date: string;
-//   vote_average: number;
-//   original_title: string;
-// };
-
-// const fetchMovieById = async (id: string): Promise<Movie> => {
-//   const res = await fetch(`https://api.themoviedb.org/3/movie/${id}`, {
-//     headers: {
-//       Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_KEY}`,
-//     },
-//   });
-
-//   return res.json();
-// };
-
-// export default async function MovieDetailPage({
-//   params,
-// }: {
-//   params: { movieDetail: string };
-// }) {
-//   const { movieDetail } = params;
-
-//   const movie = await fetchMovieById(movieDetail);
-//   console.log(movie);
-//   return (
-//     <div className="p-6">
-//       <h1 className="text-3xl font-bold mb-4">{movie.title}</h1>
-
-//       <Image
-//         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-//         alt={movie.title}
-//         width={300}
-//         height={450}
-//       />
-
-//       <p className="mt-4">{movie.overview}</p>
-
-//       <div className="mt-4 space-y-1">
-//         <p>📅 {movie.release_date}</p>
-//         <p>⭐ {movie.vote_average}</p>
-//         <p>⏱ {movie.runtime} мин</p>
-//         <p>🗳 {movie.vote_count} санал</p>
-//       </div>
-//     </div>
-//   );
-// }
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!
+// KINO BAGIINHNII MEDEELLIIG API AAS DUUDAJ AVAH HEREGTEI!!!!!!!

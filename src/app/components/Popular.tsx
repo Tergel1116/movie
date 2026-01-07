@@ -24,12 +24,12 @@ export default async function Popular() {
   const movies: Movie[] = await fetchFromPopularMovieDB("popular");
   return (
     <div className="flex flex-col  m-0">
-      <div className="flex justify-between items center m-10">
+      <div className="flex justify-between items-center m-10 ">
         <span className="text-[24px] font-semibold">Popular</span>
         {/* <Seemore /> */}
         <Link href="/category/popular">
-          <button className="p-2 bg-amber-300 hover:cursor-pointer flex gap-2 items-center justify-center">
-            <span>See more</span>
+          <button className="p-0  hover:cursor-pointer flex gap-2 items-center justify-center">
+            <span>See more ➔</span>
           </button>
         </Link>
       </div>
