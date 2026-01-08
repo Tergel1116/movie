@@ -1,4 +1,4 @@
-type Movie = {
+export type Movie = {
   id: Number;
   runtime: number;
   vote_count: number;
@@ -9,5 +9,17 @@ type Movie = {
   release_date: string;
   vote_average: number;
   original_title: string;
-  genres: string;
+  genres: { id: number; name: string }[];
+};
+export type CastMember = {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+};
+export type CrewMember = {
+  id: number;
+  name: string;
+  job: string;
+  department: string;
 };

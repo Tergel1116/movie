@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import { AlignVerticalJustifyEnd } from "lucide-react";
 import { log } from "console";
+import { Team } from "./components/Team";
+import { Similar } from "./components/Similar";
 
 export type Movie = {
   id: number;
@@ -14,7 +16,7 @@ export type Movie = {
   release_date: string;
   vote_average: number;
   original_title: string;
-  // genres: string;
+
   genres: { id: number; name: string }[];
   trailer: number;
 };
@@ -43,9 +45,9 @@ export default async function movieDetail({
 
   const imagePath = "https://image.tmdb.org/t/p/original";
   return (
-    <div className="mb-[0px]">
-      <div className="flex w-screen justify-between px-20 pb-5 ">
-        <div>
+    <div className="mb-[0px] flex flex-col items-center">
+      <div className="flex  justify-between  pb-5 w-[60vw] ">
+        <div className="">
           <div className="text-[36px] font-bold">{movie.title}</div>
           <div className="flex gap-2">
             <div>{movie.release_date} · PG ·</div>
@@ -72,9 +74,9 @@ export default async function movieDetail({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-9 ">
+      <div className="flex flex-col gap-9 w-[60vw]">
         <div className="flex gap-8 items-center justify-center flex-col">
-          <div className="flex items-center justify-between gap-10">
+          <div className="flex items-center justify-center gap-10 w-[60vw]">
             <Image
               src={`${imagePath}${movie.poster_path}`}
               alt={movie.title}
@@ -97,7 +99,7 @@ export default async function movieDetail({
             </div>
           </div>
         </div>
-        <div className="px-20 flex gap-3">
+        <div className=" flex gap-3 w-[70vw]">
           {movie.genres?.map((genre) => (
             <div
               key={genre.id}
@@ -107,7 +109,9 @@ export default async function movieDetail({
             </div>
           ))}
         </div>
-        <div className="px-20">{movie.overview}</div>
+        <div className="">{movie.overview}</div>
+        <Team movieId={id} />
+        <Similar />
       </div>
     </div>
   );
