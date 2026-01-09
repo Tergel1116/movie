@@ -23,12 +23,12 @@ export const MovieCard = ({ movie }: Props) => {
             alt={movie.title}
             width={200}
             height={300}
-            className="rounded-[8px_8px_0px_0px] w-[300px] hover:cursor-pointer hover:opacity-[0.8] duration-500 transition-transform ease-in-out hover:scale-100"
+            className="rounded-[8px_8px_0px_0px] w-[300px] hover:cursor-pointer hover:opacity-[0.8] duration-500 transition-transform ease-in-out hover:scale-100 "
           />
           <div className="bg-gray-100 rounded-lg py-2  px-2 w-[200px]">
             <p className="">
               ⭐ {movie.vote_average?.toFixed(1)}
-              <span className="text-gray-400">/10</span>{" "}
+              <span className="text-gray-400">/10</span>
             </p>
             <p>{movie.title}</p>
           </div>

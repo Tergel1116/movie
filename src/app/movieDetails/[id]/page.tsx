@@ -16,7 +16,6 @@ export type Movie = {
   release_date: string;
   vote_average: number;
   original_title: string;
-
   genres: { id: number; name: string }[];
   trailer: number;
 };
@@ -111,7 +110,7 @@ export default async function movieDetail({
         </div>
         <div className="">{movie.overview}</div>
         <Team movieId={id} />
-        <Similar />
+        <Similar movieId={id} />
       </div>
     </div>
   );
