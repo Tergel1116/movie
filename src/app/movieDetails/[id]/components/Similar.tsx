@@ -3,7 +3,7 @@ import { Movie } from "../../../../..";
 import { div } from "motion/react-client";
 import { MovieCard } from "@/app/components/MovieCard";
 import Image from "next/image";
-
+import Link from "next/link";
 type Props = {
   movieId: string;
 };
@@ -29,10 +29,18 @@ export const Similar = async ({ movieId }: Props) => {
   const imagePath = "https://image.tmdb.org/t/p/original";
 
   return (
-    <div>
+    <div className="flex flex-col gap-3">
+      <div className="flex items-center justify-between">
+        <span className="text-[26px] font-bold">More like this</span>
+        {/* <Link href="/category/similar"> */}
+        <button className="text-[15px] font-semibold hover:cursor-pointer">
+          See more →
+        </button>
+        {/* </Link> */}
+      </div>
       <div className="grid grid-cols-5">
-        {movies.slice(0, 5).map((movie) => (
-          <div key={movie.id}>
+        {movies.slice(0, 5).map((movie, index) => (
+          <div key={index}>
             <MovieCard movie={movie} />
           </div>
         ))}

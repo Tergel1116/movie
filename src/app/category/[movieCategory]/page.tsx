@@ -1,23 +1,3 @@
-// import { fetchFromPopularMovieDB } from "@/app/components/Popular";
-// import { MovieCard } from "@/app/components/MovieCard";
-// export default async function Page({
-//   params,
-// }: {
-//   params: Promise<{ movieCategory: string }>;
-// }) {
-//   const { movieCategory } = await params;
-
-//   const movies: Movie[] = await fetchFromPopularMovieDB(movieCategory);
-
-//   {
-//     movies.map((movie) => (
-
-//         <MovieCard movie={movie} key={movie} />;
-//     });
-// )
-
-//     return <div>{movieCategory}</div>;
-// }
 import { fetchFromPopularMovieDB } from "@/app/components/Popular";
 import { MovieCard } from "@/app/components/MovieCard";
 import { Header } from "@/app/components/Header";
@@ -41,11 +21,6 @@ export default async function Page({
 
   return (
     <div className="flex flex-col gap-10 px-16">
-      {/* <div className="flex items-center ">
-        <img src="/movieLogo.png" alt="" className="h-[20px] w-[92px]" />
-        <Header />
-        <img src="/darkmode.png" alt="" className="h-[36px] w-[36px]" />
-      </div> */}
       <p className="text-[30px] font-semibold">{movieCategory}</p>
       <div className="grid grid-cols-5 gap-10 m-auto">
         {movies.map((movie) => (

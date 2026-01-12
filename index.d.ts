@@ -1,5 +1,5 @@
 export type Movie = {
-  id: Number;
+  id: number;
   runtime: number;
   vote_count: number;
   backdrop_path: string;
