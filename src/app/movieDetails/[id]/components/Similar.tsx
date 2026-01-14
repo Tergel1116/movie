@@ -32,11 +32,11 @@ export const Similar = async ({ movieId }: Props) => {
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <span className="text-[26px] font-bold">More like this</span>
-        {/* <Link href="/category/similar"> */}
-        <button className="text-[15px] font-semibold hover:cursor-pointer">
-          See more →
-        </button>
-        {/* </Link> */}
+        <Link href={`/similar/${movieId}`}>
+          <button className="text-[15px] font-semibold hover:cursor-pointer">
+            See more →
+          </button>
+        </Link>
       </div>
       <div className="grid grid-cols-5">
         {movies.slice(0, 5).map((movie, index) => (
