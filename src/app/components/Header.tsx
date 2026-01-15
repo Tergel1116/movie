@@ -75,7 +75,9 @@ export const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
+                {/* <Link href={`genre${genre.id}`}> */}
                 <BadgeDemo />
+                {/* </Link> */}
               </motion.div>
             </motion.div>
           )}

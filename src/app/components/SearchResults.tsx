@@ -78,10 +78,12 @@ export const SearchResults = ({ keyword, results, onClose }: Props) => {
       {/* Footer */}
       <div className="h-14 flex items-center border-t border-[#E4E4E7]">
         {results.length > 0 ? (
-          <span className="pl-5 text-sm flex gap-2">
-            See all results for
-            <span className="font-semibold">"{keyword}"</span>
-          </span>
+          <Link href={`/seeAllResults/${keyword}`}>
+            <span className="pl-5 text-sm flex gap-2">
+              See all results for
+              <span className="font-semibold">"{keyword}"</span>
+            </span>
+          </Link>
         ) : (
           <div className="w-full text-center text-sm text-gray-500">
             No result
