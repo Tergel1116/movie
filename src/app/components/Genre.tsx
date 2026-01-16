@@ -2,7 +2,8 @@
 
 import useSWR from "swr";
 import { Badge } from "@/components/ui/badge";
-
+import Link from "next/link";
+// import { genreResult } from "../genre/[genreResult]/page";
 export type Movie = {
   id: Number;
   runtime: number;
@@ -40,13 +41,14 @@ export default function BadgeDemo() {
       </div>
       <div className="flex w-full flex-wrap gap-[22px]">
         {genres.map((genre: any) => (
-          <Badge
-            key={genre.id}
-            variant="outline"
-            className="hover:bg-gray-200 hover:cursor-pointer"
-          >
-            {genre.name} <span className="scale-170 mb-[1px]">›</span>
-          </Badge>
+          <Link href={`/genre/${genre.id}`} key={genre.id}>
+            <Badge
+              variant="outline"
+              className="hover:bg-gray-200 hover:cursor-pointer"
+            >
+              {genre.name} <span className="scale-170 mb-[1px]">›</span>
+            </Badge>
+          </Link>
         ))}
       </div>
     </div>

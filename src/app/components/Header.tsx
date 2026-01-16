@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { MdOutlineEmail } from "react-icons/md";
 import { TbMovie } from "react-icons/tb";
 import { MdOutlineDarkMode } from "react-icons/md";
+// import { genreResult } from "../genre/[genreResult]/page";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +30,9 @@ export const Header = () => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
+
+  const handleOutClick = () => setSearchValue("");
+
   return (
     <div className=" w-screen flex justify-between px-[48px] py-[20px] items-center">
       <Link href="/">
@@ -76,7 +80,9 @@ export const Header = () => {
                 transition={{ delay: 0.2 }}
               >
                 {/* <Link href={`genre${genre.id}`}> */}
+
                 <BadgeDemo />
+
                 {/* </Link> */}
               </motion.div>
             </motion.div>
@@ -95,6 +101,7 @@ export const Header = () => {
             <SearchResults
               keyword={searchValue}
               results={results}
+              handleOutClick={handleOutClick}
               onClose={() => setSearchValue("")}
             />
           </div>
