@@ -24,7 +24,7 @@ export const Header = () => {
 
   const { data, isLoading, error } = useSWR(
     `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/search/movie?query=${searchValue}&language=en-US&page=1`,
-    fetcher
+    fetcher,
   );
   const results = data?.results ?? [];
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +44,7 @@ export const Header = () => {
       <div className="flex gap-[10px] relative right-40">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="h-8 w-25 bg-white border hover:cursor-pointer hover:bg-gray-200 duration-300 border-gray-200 rounded-[6px] flex items-center justify-center gap-2"
+          className="h-8 w-25 bg-white border hover:cursor-pointer hover:bg-gray-200 duration-300 border-gray-200 rounded-[6px] flex items-center justify-center gap-2 max-sm:hidden"
         >
           <span className="scale-140 mb-2">⌵</span> Genre
         </button>
@@ -92,7 +92,7 @@ export const Header = () => {
           <input
             type="search"
             placeholder="Search..."
-            className="py-[3px] px-2 border border-gray-200 rounded-[6px] w-[379px]"
+            className="py-[3px] px-2 border border-gray-200 rounded-[6px] w-[379px] max-sm:w-[36px] h-[36px] max-sm:relative max-sm:bottom-4.5 max-sm:left-25"
             onChange={handleChange}
             value={searchValue}
           />

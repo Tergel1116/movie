@@ -122,7 +122,7 @@ export default async function GenreResultPage({
             <span className=" font-semibold">
               {totalResults.toLocaleString()}
             </span>
-            movies in this category
+            movies in this category 
           </p>
         </div>
 
@@ -146,19 +146,26 @@ export default async function GenreResultPage({
     </div>
   );
 }
-
-// const movies: Movie[] = await fetchMoviesByGenre();
-// const movies: Movie[] = await fetchMoviesByGenre();
-// const movies: Movie[] = await fetchMoviesByGenre();
-// const movies: Movie[] = await fetchMoviesByGenre();
-// const movies: Movie[] = await fetchMoviesByGenre();
-// const movies: Movie[] = await fetchMoviesByGenre();
-
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
-// GENRE AAR HAINASHUUUU!!!!!!!!!!
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
+// genre iin page deeer pagination hiine
