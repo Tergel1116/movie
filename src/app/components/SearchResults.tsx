@@ -62,7 +62,6 @@ export const SearchResults = ({ keyword, results, onClose }: Props) => {
               </div>
             </div>
 
-            {/* RIGHT: See more button */}
             <Link href={`/movieDetails/${movie.id}`}>
               <button
                 // onClick={}
@@ -85,7 +84,7 @@ export const SearchResults = ({ keyword, results, onClose }: Props) => {
             </span>
           </Link>
         ) : (
-          <div className="w-full text-center text-sm text-gray-500">
+          <div className="w-full text-center text-sm text-gray-500 absolute bottom-6">
             No result
           </div>
         )}

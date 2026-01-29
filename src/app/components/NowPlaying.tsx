@@ -54,16 +54,18 @@ export const NowPlaying = ({ movie }: Props) => {
         className="w-full shrink-0 h-[600px] object-cover"
       />
 
-      <div className="absolute inset-[150px_30px_30px_120px] flex flex-col gap-5">
+      <div className="absolute inset-[150px_30px_30px_50px] flex flex-col gap-5 max-sm:gap-1">
         <div className="text-white">Now playing:</div>
-        <div className="h-10 w-200 text-[36px] font-bold text-white">
+        <div className="h-10 w-200 text-[36px] font-bold max-sm:w-90 max-sm:mb-15 text-white">
           {movie.title}
         </div>
         <div className="flex gap-2 text-[18px] font-bold text-white">
           ⭐{movie.vote_average?.toFixed(1)}
           <span className="text-gray-600 opacity-100">/10</span>
         </div>
-        <div className="text-[12px] text-white w-100">{movie.overview}</div>
+        <div className="text-[12px] text-white w-100 max-sm:w-50">
+          {movie.overview}
+        </div>
         <div className="flex gap-2 items-center">
           <div>
             <TrailerModel movieId={movie.id} />

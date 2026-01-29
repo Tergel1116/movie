@@ -14,7 +14,7 @@ const fetchCredits = async (id: string) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_KEY}`,
       },
-    }
+    },
   );
   const data = await response.json();
   //   console.log(data);
@@ -32,7 +32,7 @@ export const Team = async ({ movieId }: { movieId: string }) => {
     crew
       .filter((member) => member.department === "Writing")
       .slice(0, 4)
-      .map(({ name }) => name)
+      .map(({ name }) => name),
   );
   const stars = cast.slice(0, 3);
 
