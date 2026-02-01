@@ -11,7 +11,7 @@ const fetchFromTopRatedMovieDB = async () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_KEY}`,
       },
-    }
+    },
   );
   const data = await response.json();
 
@@ -22,7 +22,7 @@ export default async function TopRated() {
   const movies: Movie[] = await fetchFromTopRatedMovieDB();
   return (
     <div className="flex flex-col">
-      <div className="flex items-center m-10 justify-between">
+      <div className="flex items-center m-10 justify-between max-sm:mx-0">
         <span className="text-[26px] font-semibold">Top Rated</span>
         {/* <Seemore /> */}
         <Link href="/category/top_rated">
@@ -31,7 +31,7 @@ export default async function TopRated() {
           </button>
         </Link>
       </div>
-      <div className="grid grid-cols-5 gap-5 w-[70vw]">
+      <div className="grid grid-cols-5 gap-5 w-[70vw] max-sm:grid-cols-2">
         {movies?.slice(0, 10).map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}

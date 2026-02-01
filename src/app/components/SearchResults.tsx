@@ -21,7 +21,7 @@ export const SearchResults = ({ keyword, results, onClose }: Props) => {
   if (!keyword) return null;
 
   return (
-    <div className="relative left-1/2 mt-2 w-[95%] -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7] ">
+    <div className="relative z-10 left-1/2 mt-2 w-[95%] -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7] ">
       {/* Search results list */}
       <ul>
         {results.slice(0, 5).map((movie) => (

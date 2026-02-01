@@ -26,7 +26,7 @@ export default async function Upcoming() {
 
   return (
     <div className="">
-      <div className="flex justify-between m-10 items-center">
+      <div className="flex justify-between m-10 max-sm:flex max-sm:mx-0 items-center">
         <span className="font-semibold text-[24px]">Upcoming </span>
         {/* <Seemore /> */}
         <Link href="/category/upcoming">
