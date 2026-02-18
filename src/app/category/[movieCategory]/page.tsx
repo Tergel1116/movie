@@ -31,7 +31,7 @@ export default async function Page({ params, searchParams }: PageProps) {
     <div className="flex flex-col gap-10 px-16">
       <p className="text-[30px] font-semibold capitalize">{movieCategory}</p>
 
-      <div className="grid grid-cols-5 gap-10 max-sm:grid-cols-2">
+      <div className="grid grid-cols-5 gap-10  max-sm:grid-cols-2 max-sm:gap-x-30">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

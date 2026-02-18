@@ -70,8 +70,8 @@ export default async function GenreResultPage({
   );
 
   return (
-    <div className="flex w-screen flex gap-15 flex-row-reverse">
-      <div className="container  p-8 w-[70vw]">
+    <div className="flex w-screen flex gap-15 flex-row-reverse max-sm:flex max-sm:flex-col-reverse ">
+      <div className="container  p-8 w-[70vw] max-sm:w-[100vw] max-sm:m-auto ">
         <div className="mb-10 flex flex-col gap-2">
           <h1 className="text-3xl font-bold text-white">
             {currentGenre ? currentGenre.name : "Unknown Genre"} Movies
@@ -86,7 +86,7 @@ export default async function GenreResultPage({
         </div>
         <hr className="border-gray-800 mb-10" />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-sm:gap-15 ">
           {movies.length > 0 ? (
             movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)
           ) : (
@@ -103,9 +103,9 @@ export default async function GenreResultPage({
           </div>
         )}
       </div>
-      <div className="w-[30vw] mt-20 ml-10 flex flex-col gap-10">
+      <div className="w-[30vw] mt-20 ml-10 flex flex-col gap-10 max-sm:flex-col">
         <div className="text-[30px] font-semibold">Search filter</div>
-        <div className="">
+        <div className="max-sm:flex max-sm:flex-row max-sm:w-[80vw] max-sm:mr-[10px] ">
           <BadgeDemo />
         </div>
       </div>
