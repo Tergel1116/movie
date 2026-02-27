@@ -38,7 +38,7 @@ export const Similar = async ({ movieId }: Props) => {
           </button>
         </Link>
       </div>
-      <div className="grid grid-cols-5  w-[90vw] gap-5 max-sm:hidden ">
+      <div className="grid grid-cols-5  w-full gap-5 max-sm:hidden ">
         {movies.slice(0, 5).map((movie, index) => (
           <div key={index}>
             <MovieCard movie={movie} />
