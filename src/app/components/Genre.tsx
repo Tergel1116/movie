@@ -100,7 +100,7 @@ export default function BadgeDemo() {
 // import useSWR from "swr";
 // import { Badge } from "@/components/ui/badge";
 // import { useParams, useRouter } from "next/navigation";
-// import { useEffect, useState, useRef } from "react";
+// import { useEffect, useState, useRef } from "react"; // useRef нэмсэн
 
 // const fetcher = (url: string) =>
 //   fetch(url, {
@@ -114,25 +114,9 @@ export default function BadgeDemo() {
 //   const params = useParams();
 //   const router = useRouter();
 
-//   const [isOpen, setIsOpen] = useState(true); // 👈 анхнаасаа нээлттэй
-//   const wrapperRef = useRef<HTMLDivElement>(null);
-
-//   // Outside click → хаах
-//   useEffect(() => {
-//     function handleClickOutside(e: MouseEvent) {
-//       if (
-//         wrapperRef.current &&
-//         !wrapperRef.current.contains(e.target as Node)
-//       ) {
-//         setIsOpen(false);
-//       }
-//     }
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => {
-//       document.removeEventListener("mousedown", handleClickOutside);
-//     };
-//   }, []);
+//   // --- ШИНЭ: Цэс нээлттэй эсэхийг удирдах state ---
+//   const [isOpen, setIsOpen] = useState(true);
+//   const menuRef = useRef<HTMLDivElement>(null);
 
 //   const rawGenreParam = params?.genreResult
 //     ? decodeURIComponent(params.genreResult as string)
@@ -145,6 +129,18 @@ export default function BadgeDemo() {
 //   );
 //   const genres = data?.genres || [];
 
+//   // --- ШИНЭ: Гадна талд дарахад хаах логик ---
+//   useEffect(() => {
+//     const handleClickOutside = (event: MouseEvent) => {
+//       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+//         setIsOpen(false); // Гадна талд дарахад хаана
+//       }
+//     };
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => document.removeEventListener("mousedown", handleClickOutside);
+//   }, []);
+
 //   const toggleGenre = (id: string) => {
 //     let newGenres;
 //     const stringId = String(id);
@@ -155,6 +151,9 @@ export default function BadgeDemo() {
 //       newGenres = [...currentGenres, stringId];
 //     }
 
+//     // --- ШИНЭ: Сонголт хиймэгц цэсийг хаах ---
+//     setIsOpen(false);
+
 //     if (newGenres.length > 0) {
 //       router.push(`/genre/${newGenres.join(",")}`);
 //     } else {
@@ -162,33 +161,39 @@ export default function BadgeDemo() {
 //     }
 //   };
 
+//   // Хэрэв хаалттай бол юу ч харуулахгүй (эсвэл нээх товч харуулж болно)
+//   if (!isOpen) return null;
+
 //   return (
+//     // menuRef-ийг энд холбож өгнө
 //     <div
-//       ref={wrapperRef}
-//       onClick={() => setIsOpen(true)} // 👈 дотор дархад нээгдэнэ
-//       className="flex flex-col items-center gap-2"
+//       ref={menuRef}
+//       className="flex flex-col items-center gap-2 bg-white p-4 shadow-lg rounded-lg border"
 //     >
-//       <div className="border-b w-full h-[60px] flex flex-col mb-2 mt-[-15px] pb-18">
-//         <span className="text-black font-bold text-[24px]">Genres</span>
-//         <span className="text-black">Selected: {currentGenres.length}</span>
+//       <div className="border-b w-full flex flex-col mb-4 pb-2">
+//         <div className="flex justify-between items-center">
+//           <span className="text-black font-bold text-[24px]">Genres</span>
+//           {/* Гараар хаах товч нэмж болно */}
+//           <button
+//             onClick={() => setIsOpen(false)}
+//             className="text-gray-400 hover:text-black"
+//           >
+//             ✕
+//           </button>
+//         </div>
+//         <span className="text-black text-sm">
+//           Selected: {currentGenres.length}
+//         </span>
 //       </div>
 
-//       {/* ЭНД ЮУ Ч УСТААГҮЙ */}
-//       <div
-//         className={`flex w-full flex-wrap gap-[22px] transition-all duration-200 ${
-//           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-//         }`}
-//       >
+//       <div className="flex w-full flex-wrap gap-[12px]">
 //         {genres.map((genre: any) => {
 //           const isActive = currentGenres.includes(String(genre.id));
 
 //           return (
 //             <Badge
 //               key={genre.id}
-//               onClick={(e) => {
-//                 e.stopPropagation();
-//                 toggleGenre(String(genre.id));
-//               }}
+//               onClick={() => toggleGenre(String(genre.id))}
 //               variant={isActive ? "default" : "outline"}
 //               className={`hover:cursor-pointer transition-all duration-200 px-4 py-1.5 select-none ${
 //                 isActive
@@ -197,11 +202,6 @@ export default function BadgeDemo() {
 //               }`}
 //             >
 //               {genre.name}
-//               {isActive && (
-//                 <span className="ml-2 bg-white text-black rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">
-//                   ✕
-//                 </span>
-//               )}
 //             </Badge>
 //           );
 //         })}
@@ -209,9 +209,9 @@ export default function BadgeDemo() {
 
 //       {currentGenres.length > 0 && (
 //         <button
-//           onClick={(e) => {
-//             e.stopPropagation();
+//           onClick={() => {
 //             router.push("/");
+//             setIsOpen(false);
 //           }}
 //           className="text-xs text-gray-500 underline mt-4 hover:text-black"
 //         >

@@ -16,7 +16,7 @@ const fetchMoreLikeMovieDB = async (id: string) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_DB_KEY}`,
       },
-    }
+    },
   );
   const data = await response.json();
   console.log(data);
@@ -38,8 +38,15 @@ export const Similar = async ({ movieId }: Props) => {
           </button>
         </Link>
       </div>
-      <div className="grid grid-cols-5">
+      <div className="grid grid-cols-5  w-[90vw] gap-5 max-sm:hidden ">
         {movies.slice(0, 5).map((movie, index) => (
+          <div key={index}>
+            <MovieCard movie={movie} />
+          </div>
+        ))}
+      </div>
+      <div className="max-sm:grid  max-sm:grid-cols-2 w-[90vw] gap-7 hidden max-sm:block">
+        {movies.slice(0, 6).map((movie, index) => (
           <div key={index}>
             <MovieCard movie={movie} />
           </div>

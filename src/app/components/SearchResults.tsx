@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 type Movie = {
   id: number;
@@ -18,10 +21,29 @@ type Props = {
 };
 
 export const SearchResults = ({ keyword, results, onClose }: Props) => {
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [onClose]);
+
   if (!keyword) return null;
 
   return (
-    <div className="relative z-10 left-1/2 mt-2 w-[95%] -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7] ">
+    <div
+      ref={searchRef}
+      className="relative z-10 left-1/2 mt-2 w-[95%] -translate-x-1/2 rounded-md bg-white shadow-lg border border-[#E4E4E7]"
+    >
       {/* Search results list */}
       <ul>
         {results.slice(0, 5).map((movie) => (
@@ -62,11 +84,8 @@ export const SearchResults = ({ keyword, results, onClose }: Props) => {
               </div>
             </div>
 
-            <Link href={`/movieDetails/${movie.id}`}>
-              <button
-                // onClick={}
-                className="flex-shrink-0 text-sm hover:cursor-pointer font-medium text-black hover:underline"
-              >
+            <Link href={`/movieDetails/${movie.id}`} onClick={onClose}>
+              <button className="flex-shrink-0 text-sm hover:cursor-pointer font-medium text-black hover:underline">
                 See more →
               </button>
             </Link>
@@ -77,7 +96,11 @@ export const SearchResults = ({ keyword, results, onClose }: Props) => {
       {/* Footer */}
       <div className="h-14 flex items-center border-t border-[#E4E4E7]">
         {results.length > 0 ? (
-          <Link href={`/seeAllResults/${keyword}`}>
+          <Link
+            href={`/seeAllResults/${keyword}`}
+            onClick={onClose}
+            className="w-full"
+          >
             <span className="pl-5 text-sm flex gap-2">
               See all results for
               <span className="font-semibold">"{keyword}"</span>
