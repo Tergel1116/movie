@@ -147,6 +147,7 @@ import Link from "next/link";
 import { Team } from "./components/Team";
 import { Similar } from "./components/Similar";
 import { TrailerModel } from "./components/TrailerModel";
+import WatchMovie from "@/app/watch/[id]/page";
 
 export type Movie = {
   id: number;
@@ -254,6 +255,11 @@ export default async function movieDetail({
                 <span className="text-white font-semibold text-sm sm:text-base group-hover:underline">
                   Play trailer
                 </span>
+              </div>
+              <div>
+                <Link href={`/watch/${id}`}>
+                  <div className="text-white">Watch now</div>
+                </Link>
               </div>
             </div>
           </div>

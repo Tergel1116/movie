@@ -11,8 +11,8 @@ export default function WatchMovie({
   const videoUrl = `https://www.vidking.net/embed/movie/${resolvedParams.id}`;
   return (
     <div>
-      <div>
-        <iframe src={videoUrl}></iframe>
+      <div className="">
+        <iframe src={videoUrl} className="h-[60vh] w-[60vw]"></iframe>
       </div>
     </div>
   );
