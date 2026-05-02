@@ -16,7 +16,7 @@ export const fetchFromPopularMovieDB = async (
     },
   );
   const data = await response.json();
-  console.log(response);
+
   return data.results;
 };
 

@@ -186,7 +186,6 @@ export default async function movieDetail({
 
   return (
     <div className="mb-0 flex flex-col items-center min-h-screen text-black px-4 sm:px-8">
-      {/* 1. Header: Гарчиг болон Үнэлгээ */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full max-w-[1080px] mt-6 sm:mt-10 gap-4">
         <div>
           <h1 className="text-2xl sm:text-[36px] font-bold text-black leading-tight">
@@ -249,7 +248,7 @@ export default async function movieDetail({
               priority
             />
             {/* Play Trailer Overlay */}
-            <div className="absolute inset-0 bg-black/20 flex items-end p-4 sm:p-6">
+            <div className="absolute inset-0 bg-black/20 flex items-end p-4 sm:p-6 justify-between">
               <div className="flex items-center gap-3 cursor-pointer group">
                 <TrailerModel movieId={movie.id} />
                 <span className="text-white font-semibold text-sm sm:text-base group-hover:underline">
@@ -258,7 +257,9 @@ export default async function movieDetail({
               </div>
               <div>
                 <Link href={`/watch/${id}`}>
-                  <div className="text-white">Watch now</div>
+                  <div className="text-black ml-7 px-5 py-2 bg-white mb-[-5px] hover:underline  rounded-lg hover:bg-gray-200">
+                    Watch now
+                  </div>
                 </Link>
               </div>
             </div>
